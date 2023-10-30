@@ -1,1 +1,1 @@
-Esse portifólio foi desenvolvido para armazenar organizadamente as atividades desenvolvidas durante o curso Full Stack da Growdev.
+Esse portifólio foi desenvolvido para armazenar organizadamente as atividades durante o curso Full Stack da Growdev.

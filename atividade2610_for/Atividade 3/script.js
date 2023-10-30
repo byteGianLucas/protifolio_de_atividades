@@ -6,9 +6,10 @@
 // 2 * 2 = 4
 // 3 * 2 = 6
 
-const numeroDaTabuada = Number(prompt("Digite um número:"))
-const interacoes = Number(prompt("Digite a quantidade de interações:"))
+const numeroDaTabuada = Number(prompt("Digite um número:"));
+const interacoes = Number(prompt("Digite a quantidade de interações:"));
 
-for (let i = 0; i <= interacoes; i++) {
-    console.log(`${i} x ${numeroDaTabuada} = ${i * numeroDaTabuada}`);
+for (let i = 1; i <= interacoes; i++) {
+    const resultado = i * numeroDaTabuada;
+    document.write(`${i} x ${numeroDaTabuada} = ${resultado}<br>`);
 }

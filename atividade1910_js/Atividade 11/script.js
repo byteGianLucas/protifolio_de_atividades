@@ -5,7 +5,7 @@
 
 const numb = prompt("Digite um número inteiro:")
 
-if (numb / 2 == 0) {
+if (numb % 2 == 0) {
     alert("Número é par!")
 } else {
     alert("Número é impar!")

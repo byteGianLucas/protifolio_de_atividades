@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 9</title>
+</head>
+<body>
+    <script>
+    //     9. Informe um valor a uma variável e imprima no console se o número
+    // é primo.
+
+    let number = parseInt(prompt('Digite um número para verificar se é primo:'));
+    let primo = true;
+
+    if (number <= 1) {
+        primo = false;
+    } else if (number > 2) {
+        for (let i = 2; i < number; i++) {
+            if (number % i === 0) {
+                primo = false;
+                break;
+            }
+        }
+    }
+
+    if (primo) {
+        document.write(`${number} é primo.`);
+    } else {
+        document.write(`${number} não é primo.`);
+    }
+
+    </script>
+</body>
+</html>

@@ -10,4 +10,4 @@ let totalIdade = 0;
     }
   }
 console.log(`Média: ${(totalIdade / contador).toFixed(2)}`)
-console.log(`Total de alunos: ${contador}`)
+console.log(`Total de alunos: ${contador}`) 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+<body>
+    <script>
+        // 3. Desenvolva um algoritmo que preenche um vetor com os 4
+        // primeiros números perfeitos.
+
+        let numerosPerfeitos = [];
+        let numeroAtual = 2;
+
+        while (numerosPerfeitos.length < 4) {
+            let somaDivisores = 0;
+            for (let i = 1; i < numeroAtual; i++) {
+                if (numeroAtual % i === 0) {
+                    somaDivisores += i;
+                }
+            }
+
+            if (somaDivisores === numeroAtual) {
+                numerosPerfeitos.push(numeroAtual);
+            }
+
+            numeroAtual++;
+        }
+
+        document.write(`<h1> ${numerosPerfeitos} </h1>`)
+
+
+
+    </script>
+</body>
+</html>

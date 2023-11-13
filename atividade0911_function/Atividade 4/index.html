@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+</head>
+<body>
+    <script>
+
+// 4. Crie uma função que recebe por parâmetro o tempo de duração de
+// uma fábrica expressa em segundos e retorna esse tempo em horas,
+// minutos e segundos.
+
+// Ex:
+// Entrada: 3672
+// Saída: 1:1:12
+
+let segundos = 3672;
+
+function converter(segundos) {
+    const horas = Math.floor(segundos / 3600)
+    segundos %= 3600
+    const minutos = Math.floor(segundos / 60)
+    segundos %= 60
+    return `${horas}:${minutos}:${segundos}`
+}
+
+const tempoSegundos = 3672
+
+console.log(converter(tempoSegundos))
+document.write('<h1> ACESSE O CONSOLE </h1>')
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5</title>
+</head>
+<body>
+    <script>
+
+//5. Crie uma função que recebe um valor inteiro e retorne verdadeiro se
+// é um valor perfeito ou falso se não for. Um valor é dito perfeito
+// quando ele é igual a soma dos seus divisores excetuando ele
+// próprio.
+
+// Ex: 6 é perfeito, pois 6 = 1 + 2 + 3, que são seus divisores
+
+
+function numeroPerfeito(valor) {
+    if (valor <= 1) {
+        return false
+    }
+
+    let soma = 1
+
+    for (let i = 2; i < valor; i++) {
+        if (valor % i === 0) {
+            soma += i
+        }
+    }
+
+    return soma === valor
+}
+
+console.log(numeroPerfeito(8))
+document.write('<h1> ACESSE O CONSOLE </h1>')
+
+    </script>
+</body>
+</html>

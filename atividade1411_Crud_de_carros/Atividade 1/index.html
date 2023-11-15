@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Carros</title>
+</head>
+<body>
+
+<script>
+    let carros = []
+
+    function mensagemInicial() {
+        alert(`Bem-vindo ao sistema de CRUD de veículos:\n\nNo momento, o sistema tem ${carros.length} carros cadastrados`)
+    }
+
+    function cadastrarVeiculo() {
+    while (true) {
+        const confirmacao = confirm('Deseja cadastrar um novo veículo?');
+
+        if (confirmacao) {
+            const modelo = prompt('Digite o modelo do carro:')
+            const marca = prompt('Digite a marca do carro:')
+            const ano = prompt('Digite o ano do carro:')
+            const cor = prompt('Digite a cor do carro:')
+            const preco = prompt('Digite o preço do carro:')
+
+            const novoCarro = {
+                id: Date.now(),
+                modelo: modelo,
+                marca: marca,
+                ano: ano,
+                cor: cor,
+                preco: preco,
+            }
+
+            carros.push(novoCarro)
+
+            alert('Carro cadastrado com sucesso!')
+        } else {
+            alert('Cadastro de veículo cancelado.')
+            break
+        }
+    }
+}
+
+
+    function listar() {
+        console.log(carros)
+    }
+
+    function listarMarca() {
+        const marcaFiltrar = prompt('Digite a marca que deseja filtrar:')
+        const veiculosFiltrados = carros.filter(veiculo => veiculo.marca === marcaFiltrar)
+
+        let listaFiltrada = `Veículos da marca ${marcaFiltrar}\n`
+
+        veiculosFiltrados.forEach(veiculo => {
+            listaFiltrada += `Modelo: ${veiculo.modelo} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`
+        })
+
+        console.log(listaFiltrada)
+    }
+
+    function atualizarVeiculo() {
+        const idAtualizar = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja atualizar:'))
+
+        const veiculoAtualizar = carros.find(veiculo => veiculo.id === idAtualizar)
+
+        if (!veiculoAtualizar) {
+            alert('Veículo não encontrado. Volte para o menu inicial.')
+            return
+        }
+
+        const novaCor = prompt('Digite a nova cor do veículo:')
+        const novoPreco = prompt('Digite o novo preço do veículo:')
+
+        veiculoAtualizar.cor = novaCor
+        veiculoAtualizar.preco = novoPreco
+
+        alert('Veículo atualizado com sucesso!')
+
+        console.log(veiculoAtualizar)
+    }
+
+    function removerVeiculo() {
+        const idRemover = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja remover:'))
+
+        const indiceVeiculo = carros.findIndex(veiculo => veiculo.id === idRemover)
+
+        if (indiceVeiculo === -1) {
+            alert('Veículo não encontrado. Volte para o menu inicial.')
+            return
+        }
+
+        const veiculoRemovido = carros.splice(indiceVeiculo, 1)[0]
+
+        alert('Veículo removido com sucesso!')
+        console.log('Veículo removido:', veiculoRemovido)
+    }
+
+    function sairDoSistema() {
+        alert('Saindo do sistema. Até logo!');
+    }
+
+    function menu() {
+        while (true) {
+            const opcao = prompt(
+                'Escolha uma opção:\n' +
+                '1 - Cadastrar veículo\n' +
+                '2 - Listar veículos\n' +
+                '3 - Listar veículos por marca\n' +
+                '4 - Atualizar veículo\n' +
+                '5 - Remover veículo\n' +
+                '6 - Sair do sistema'
+            );
+
+            switch (opcao) {
+                case '1':
+                    cadastrarVeiculo()
+                    break
+                case '2':
+                    listar()
+                    break
+                case '3':
+                    listarMarca()
+                    break
+                case '4':
+                    atualizarVeiculo()
+                    break
+                case '5':
+                    removerVeiculo()
+                    break
+                case '6':
+                    sairDoSistema()
+                    return
+                default:
+                    alert('Opção inválida. Tente novamente.')
+            }
+        }
+    }
+
+    mensagemInicial()
+    menu()
+    removerVeiculo()
+    mensagemInicial()
+    cadastrarVeiculo()
+    listar()
+    listarMarca()
+    atualizarVeiculo()
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud de Restaurante</title>
+</head>
+<body>
+    <script>
+//     1. **Cadastro de Pratos**
+// - Permitir o registro de novos pratos com as seguintes informações:
+//     - Nome do prato
+//     - Descrição
+//     - Preço
+//     - Categoria (exemplo: entradas, prato principal, sobremesas)
+//     - Disponibilidade (se está disponível no menu)
+
+// Array para armazenar os pratos cadastrados
+const pratos = [
+{
+        id: 1,
+        nome: 'Lasanha à Bolonhesa',
+        descricao: 'Camadas de massa intercaladas com molho à bolonhesa e queijo gratinado.',
+        preco: 25.99,
+        categoria: 'Prato Principal',
+        disponibilidade: true,
+    },
+    {
+        id: 2,
+        nome: 'Salada Caprese',
+        descricao: 'Tomate, mussarela de búfala e manjericão regados com azeite de oliva.',
+        preco: 15.50,
+        categoria: 'Entrada',
+        disponibilidade: true,
+    },
+    {
+        id: 3,
+        nome: 'Mousse de Chocolate',
+        descricao: 'Sobremesa cremosa de chocolate.',
+        preco: 10.99,
+        categoria: 'Sobremesa',
+        disponibilidade: true,
+    }
+];
+
+function cadastrarPrato() {
+    while (true) {
+        const confirmacao = confirm('Deseja cadastrar um novo prato?');
+
+        if (confirmacao) {
+            const nome = prompt('Digite o nome do prato:');
+            const descricao = prompt('Digite a descrição do prato:');
+            const preco = prompt('Digite o preço do prato:');
+            const categoria = prompt('Digite a categoria do prato (entrada, prato principal, sobremesa):');
+            const disponibilidade = prompt('O prato está disponível no menu? (sim/não)');
+
+            const novoPrato = {
+                id: Date.now(),
+                nome: nome,
+                descricao: descricao,
+                preco: preco,
+                categoria: categoria,
+                disponibilidade: disponibilidade.toLowerCase() === 'sim',
+            };
+
+            pratos.push(novoPrato);
+
+            alert('Prato cadastrado com sucesso!');
+        } else {
+            alert('Cadastro de prato cancelado.');
+            break;
+        }
+    }
+}
+
+// 2. **Listagem de Pratos**
+//     - Apresentar uma lista completa de todos os pratos disponíveis no cardápio.
+
+function listarPratos() {
+    if (pratos.length === 0) {
+        alert('Não há pratos cadastrados.');
+        return;
+    }
+
+    let listaDePratos = 'Lista de pratos disponíveis:\n\n';
+    let pratoDisponivel = false;
+
+    pratos.forEach(prato => {
+        if (prato.disponibilidade === true) {
+            listaDePratos += `
+                ID: ${prato.id}
+                Nome: ${prato.nome}
+                Descrição: ${prato.descricao}
+                Preço: ${prato.preco}
+                Categoria: ${prato.categoria};
+                `
+
+            pratoDisponivel = true;
+        }
+    });
+
+    if (!pratoDisponivel) {
+        alert('Não há pratos disponíveis.');
+    } else {
+        alert(listaDePratos);
+    }
+}
+
+// 3. **Busca de Pratos**
+//     - Implementar a funcionalidade de buscar um prato pelo nome, categoria ou preço.
+
+function buscarPratos() {
+    const buscar = prompt('Digite o nome, categoria ou preço do prato:');
+    const resultados = [];
+
+    pratos.forEach(prato => {
+        if (
+            prato.nome.toLowerCase().includes(buscar.toLowerCase()) ||
+            prato.categoria.toLowerCase().includes(buscar.toLowerCase()) ||
+            prato.preco.toString().includes(buscar)
+        ) {
+            resultados.push(prato);
+        }
+    });
+
+    if (resultados.length === 0) {
+        alert('Nenhum prato encontrado.');
+    } else {
+        let listaResultados = 'Resultados da busca:\n\n';
+
+        resultados.forEach(prato => {
+            listaResultados += `
+                ID: ${prato.id}
+                Nome: ${prato.nome}
+                Descrição: ${prato.descricao}
+                Preço: ${prato.preco}
+                Categoria: ${prato.categoria}
+                Disponibilidade: ${prato.disponibilidade ? 'Disponível' : 'Indisponível'}\n\n`;
+        });
+
+        alert(listaResultados);
+    }
+}
+
+// 4. **Atualização de Pratos**
+//     - Permitir a edição das informações de um prato existente, como nome, descrição, preço, disponibilidade, etc.
+
+function atualizarPratos() {
+    const solicitarId = prompt('Digite o ID do prato que deseja atualizar: ')
+}
+
+
+let n = true;
+while (n) {
+    const opcao = prompt(
+        'Escolha uma opção:\n' +
+        '1 - Cadastrar prato.\n' +
+        '2 - Listar pratos.\n' +
+        '3 - Buscar pratos.\n' +
+        '4 - Atualizar pratos.\n' 
+    );
+
+    switch (opcao) {
+        case '1':
+            cadastrarPrato();
+            break;
+        case '2':
+            listarPratos();
+            break;
+        case '3':
+            buscarPratos();
+            break;
+        case '4':
+            atualizarPratos();
+            break;
+
+
+            default:
+        
+    }
+}
+
+
+// 2. **Listagem de Pratos**
+//     - Apresentar uma lista completa de todos os pratos disponíveis no cardápio.
+
+// function listar() {
+//     const carrosNaFaixaDePreco = listarPreco(0, 1000000); 
+
+//     let lista = 'Lista de Carros:\n';
+
+//     carrosNaFaixaDePreco.forEach((carro) => {
+//         lista += `Modelo: ${carro.modelo} | Marca: ${carro.marca} | Preço: R$${carro.preco}\n`;
+//     });
+
+//     alert(lista);
+// }
+
+    </script>
+</body>
+</html>

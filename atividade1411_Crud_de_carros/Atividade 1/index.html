@@ -8,22 +8,30 @@
 <body>
 
 <script>
-    let carros = []
 
-    function mensagemInicial() {
-        alert(`Bem-vindo ao sistema de CRUD de veículos:\n\nNo momento, o sistema tem ${carros.length} carros cadastrados`)
-    }
+let carros = [
+    { marca: 'Toyota', modelo: 'Corolla', preco: 50000 },
+    { marca: 'Honda', modelo: 'Civic', preco: 60000 },
+    { marca: 'Ford', modelo: 'Focus', preco: 45000 },
+    { marca: 'Chevrolet', modelo: 'Cruze', preco: 55000 },
+    { marca: 'Volkswagen', modelo: 'Golf', preco: 48000 }
+]
 
-    function cadastrarVeiculo() {
+
+function mensagemInicial() {
+    alert(`Bem-vindo ao sistema de CRUD de veículos:\n\nNo momento, o sistema tem ${carros.length} carros cadastrados`);
+}
+
+function cadastrarVeiculo() {
     while (true) {
         const confirmacao = confirm('Deseja cadastrar um novo veículo?');
 
         if (confirmacao) {
-            const modelo = prompt('Digite o modelo do carro:')
-            const marca = prompt('Digite a marca do carro:')
-            const ano = prompt('Digite o ano do carro:')
-            const cor = prompt('Digite a cor do carro:')
-            const preco = prompt('Digite o preço do carro:')
+            const modelo = prompt('Digite o modelo do carro:');
+            const marca = prompt('Digite a marca do carro:');
+            const ano = prompt('Digite o ano do carro:');
+            const cor = prompt('Digite a cor do carro:');
+            const preco = prompt('Digite o preço do carro:');
 
             const novoCarro = {
                 id: Date.now(),
@@ -32,122 +40,178 @@
                 ano: ano,
                 cor: cor,
                 preco: preco,
-            }
+            };
 
-            carros.push(novoCarro)
+            carros.push(novoCarro);
 
-            alert('Carro cadastrado com sucesso!')
+            alert('Carro cadastrado com sucesso!');
         } else {
-            alert('Cadastro de veículo cancelado.')
-            break
+            alert('Cadastro de veículo cancelado.');
+            break;
         }
     }
 }
 
+function listar() {
+    const carrosNaFaixaDePreco = listarPreco(0, 1000000); 
 
-    function listar() {
-        console.log(carros)
+    let lista = 'Lista de Carros:\n';
+
+    carrosNaFaixaDePreco.forEach((carro) => {
+        lista += `Modelo: ${carro.modelo} | Marca: ${carro.marca} | Preço: R$${carro.preco}\n`;
+    });
+
+    alert(lista);
+}
+
+function listarMarca() {
+    const marcaFiltrar = prompt('Digite a marca que deseja filtrar:');
+    const veiculosFiltrados = carros.filter((veiculo) => veiculo.marca === marcaFiltrar);
+
+    let listaFiltrada = `Veículos da marca ${marcaFiltrar}\n`;
+
+    veiculosFiltrados.forEach((veiculo) => {
+        listaFiltrada += `Modelo: ${veiculo.modelo} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`;
+    });
+
+    alert(listaFiltrada);
+}
+
+function atualizarVeiculo() {
+    const idAtualizar = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja atualizar:'));
+
+    const veiculoAtualizar = carros.find((veiculo) => veiculo.id === idAtualizar);
+
+    if (!veiculoAtualizar) {
+        alert('Veículo não encontrado. Volte para o menu inicial.');
+        return;
     }
 
-    function listarMarca() {
-        const marcaFiltrar = prompt('Digite a marca que deseja filtrar:')
-        const veiculosFiltrados = carros.filter(veiculo => veiculo.marca === marcaFiltrar)
+    const novaCor = prompt('Digite a nova cor do veículo:');
+    const novoPreco = prompt('Digite o novo preço do veículo:');
 
-        let listaFiltrada = `Veículos da marca ${marcaFiltrar}\n`
+    veiculoAtualizar.cor = novaCor;
+    veiculoAtualizar.preco = novoPreco;
 
-        veiculosFiltrados.forEach(veiculo => {
-            listaFiltrada += `Modelo: ${veiculo.modelo} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`
-        })
+    alert('Veículo atualizado com sucesso!');
 
-        console.log(listaFiltrada)
+    console.log(veiculoAtualizar);
+}
+
+function removerVeiculo() {
+    const idRemover = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja remover:'));
+
+    const indiceVeiculo = carros.findIndex((veiculo) => veiculo.id === idRemover);
+
+    if (indiceVeiculo === -1) {
+        alert('Veículo não encontrado. Volte para o menu inicial.');
+        return;
     }
 
-    function atualizarVeiculo() {
-        const idAtualizar = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja atualizar:'))
+    const veiculoRemovido = carros.splice(indiceVeiculo, 1)[0];
 
-        const veiculoAtualizar = carros.find(veiculo => veiculo.id === idAtualizar)
+    alert('Veículo removido com sucesso!');
+    console.log('Veículo removido:', veiculoRemovido);
+}
 
-        if (!veiculoAtualizar) {
-            alert('Veículo não encontrado. Volte para o menu inicial.')
-            return
-        }
+function sairDoSistema() {
+    alert('Saindo do sistema. Até logo!');
+}
 
-        const novaCor = prompt('Digite a nova cor do veículo:')
-        const novoPreco = prompt('Digite o novo preço do veículo:')
+let n = true;
+while (n) {
+    const opcao = prompt(
+        'Escolha uma opção:\n' +
+        '1 - Cadastrar veículo\n' +
+        '2 - Listar veículos\n' +
+        '3 - Listar veículos por marca\n' +
+        '4 - Atualizar veículo\n' +
+        '5 - Remover veículo\n' +
+        '6 - Sair do sistema\n' +
+        '7 - Filtrar preço\n' +
+        '8 - Carro mais caro'
+    );
 
-        veiculoAtualizar.cor = novaCor
-        veiculoAtualizar.preco = novoPreco
-
-        alert('Veículo atualizado com sucesso!')
-
-        console.log(veiculoAtualizar)
+    switch (opcao) {
+        case '1':
+            cadastrarVeiculo();
+            break;
+        case '2':
+            listar();
+            break;
+        case '3':
+            listarMarca();
+            break;
+        case '4':
+            atualizarVeiculo();
+            break;
+        case '5':
+            removerVeiculo();
+            break;
+        case '6':
+            n = false;
+            sairDoSistema();
+            break;
+        case '7':
+            const precoMinimo = parseFloat(prompt('Digite o preço mínimo:'));
+            const precoMaximo = parseFloat(prompt('Digite o preço máximo:'));
+            listarPreco(precoMinimo, precoMaximo);
+            break;
+            alert('Opção inválida. Tente novamente.');
+        case '8':
+            carroMaisCaro()
+            break
+            default:
     }
+}
 
-    function removerVeiculo() {
-        const idRemover = parseInt(prompt('Digite o IDENTIFICADOR do veículo que deseja remover:'))
 
-        const indiceVeiculo = carros.findIndex(veiculo => veiculo.id === idRemover)
+// Filtrar Carros por Faixa de Preço: Crie uma função que recebe dois argumentos, preço mínimo e preço máximo, e retorna todos os carros cujo valor está dentro desta faixa.
+function listarPreco (precoMinimo, precoMaximo) {
+    carros.sort((a,b) => a.preco - b.preco)
 
-        if (indiceVeiculo === -1) {
-            alert('Veículo não encontrado. Volte para o menu inicial.')
-            return
-        }
+    let lista = ''
 
-        const veiculoRemovido = carros.splice(indiceVeiculo, 1)[0]
+    const filtro = carros.filter(carro => carro.preco >= precoMinimo && carro.preco <= precoMaximo)
 
-        alert('Veículo removido com sucesso!')
-        console.log('Veículo removido:', veiculoRemovido)
+    filtro.forEach((carro) => {
+        lista += `Modelo: ${carro.modelo} | Marca: ${carro.marca} | Preço: R$${carro.preco}\n`;
+    });
+
+    alert(lista)
+}
+
+    
+// Encontrar o Carro Mais Caro: Utilize métodos de array para encontrar o carro mais caro do array.
+
+function carroMaisCaro () {
+    carros.sort((a, b) => b.preco - a.preco)
+
+    let maisCaro = ''
+
+    const filtroMaisCaro = carros.filter(carro => carro.preco)
+
+    filtroMaisCaro.forEach((carro) => {
+        maisCaro += `Modelo: ${carro.modelo} | Marca: ${carro.marca} | Preço: R$${carro.preco}\n`;
+    });
+
+    if (maisCaro !== '') {
+        alert(maisCaro);
+        return carros;
     }
+} 
 
-    function sairDoSistema() {
-        alert('Saindo do sistema. Até logo!');
-    }
+// Agrupar Carros por Marca: Escreva uma função que agrupe carros por marca e retorne um objeto cujas chaves são os nomes das marcas e os valores são arrays de carros dessa marca.
 
-    function menu() {
-        while (true) {
-            const opcao = prompt(
-                'Escolha uma opção:\n' +
-                '1 - Cadastrar veículo\n' +
-                '2 - Listar veículos\n' +
-                '3 - Listar veículos por marca\n' +
-                '4 - Atualizar veículo\n' +
-                '5 - Remover veículo\n' +
-                '6 - Sair do sistema'
-            );
+// Calcular a Média de Preço dos Carros: Implemente uma função que calcule e retorne a média de preço de todos os carros da lista.
 
-            switch (opcao) {
-                case '1':
-                    cadastrarVeiculo()
-                    break
-                case '2':
-                    listar()
-                    break
-                case '3':
-                    listarMarca()
-                    break
-                case '4':
-                    atualizarVeiculo()
-                    break
-                case '5':
-                    removerVeiculo()
-                    break
-                case '6':
-                    sairDoSistema()
-                    return
-                default:
-                    alert('Opção inválida. Tente novamente.')
-            }
-        }
-    }
+// Listar Carros por Ordem Alfabética: Desenvolva uma função que retorne os carros ordenados alfabeticamente por modelo.
 
-    mensagemInicial()
-    menu()
-    removerVeiculo()
-    mensagemInicial()
-    cadastrarVeiculo()
-    listar()
-    listarMarca()
-    atualizarVeiculo()
+// Contar Carros por Cor: Elabore uma função que conte quantos carros de cada cor existem na lista e retorne um objeto com esta contagem.
+
+// Converter Array para String: Crie uma função que converte o array de carros em uma string formatada, listando os detalhes de cada carro.
+
+// Buscar Carros por Características Específicas: Implemente uma função que permite buscar carros por múltiplos critérios, como cor, marca, ano, etc. Como se fosse uma barra de pesquisa.
 
 </script>
 

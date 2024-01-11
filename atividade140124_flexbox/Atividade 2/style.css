@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.square {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blueSquare {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 1px solid;
+}
+
+.circle {
+    align-self: flex-end;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: orange;
+    border: 1px solid;
+}

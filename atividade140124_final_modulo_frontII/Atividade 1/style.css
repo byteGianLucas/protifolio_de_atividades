@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background: rgb(255, 255, 255)
+}
+
+header {
+  padding: 1rem;
+}
+
+header img {
+  height: 70px;
+  width: 70px;
+}
+
+
+/* Cabeçalho */
+#input-container > h1 {
+  font-size: 5rem;
+  color: green;
+  line-height: 1.6;
+}
+
+#input-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+/* Barra de pesquisa */
+.filter-container input {
+  background-color: #fff;
+  margin-top: 2rem;
+  border: rgb(120, 117, 117) 2px solid;
+  padding: 1rem;
+  border-radius: 20px;
+  outline: none;
+  height: 40px;
+  max-width: 900px;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.filter-container img {
+  margin-right: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  border: rgb(120, 117, 117) 2px solid;
+  border-radius: 20px;
+}
+
+#buscador {
+  width: 90%;
+  font-size: 1.75rem;
+  outline: none;
+  border: none; 
+}
+
+#search-img {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+
+/* Corpo */
+#container {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Cards */
+.card {
+  max-height: 13rem;
+  width: 30%;
+  display: flex;
+  gap: 1rem;
+  background-color: rgba(247, 243, 243, 0.944);
+  
+}
+
+.character-image {
+  width: 230px;
+}
+
+.character-info {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.character-info h2 {
+  font-size: 1.25rem;
+  color: green;
+}
+
+.character-info h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.character-info p {
+  color: gray;
+}
+
+
+#pages-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  font-size: 1.25rem;
+}
+
+#pages-container button {
+  font-size: 1.25rem;
+  background-color: green;
+  cursor: pointer;
+  padding: 17px;
+  color: white;
+}
+
+#pages-container button:hover {
+  border-bottom: 2px solid #44281d;
+}
+
+#pages {
+  display: flex;
+  gap: 0.875rem;
+  background-color: green;
+  padding: 17px;
+  color: white;
+}
+
+.current-page {
+  border-bottom: solid 2px;
+}
+
+/* Rodapé */
+footer img {
+  display: block;
+  width: 400px;
+  margin: 1rem auto;
+}
+
+footer div {
+  background-color: rgb(41, 40, 40);
+  padding: 5rem;
+}
+
+/* Informações da API */
+#api-info {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+#api-info p {
+  color: gray;
+  font-weight: 600;
+}
+
+#api-info p span {
+  color: gray;
+}
+
+#developer-info {
+  text-align: center;
+  margin-top: 3rem;
+  color: gray;
+}
+
+/* Linha */
+.horizontal-line {
+  height: 1px;
+  background-color: green;
+  margin: 10px 0;
+  border: none; 
+  width: 70%;
+}
+
+.hidden {
+  visibility: hidden;
+}
